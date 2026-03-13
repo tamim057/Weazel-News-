@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Weazel News Recruitment</title>
 
 <style>
@@ -31,7 +29,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 opacity:0;
-animation:slideShow 25s infinite;
+animation:slideShow 30s infinite;
 }
 
 .slideshow img:nth-child(1){animation-delay:0s;}
@@ -43,14 +41,14 @@ animation:slideShow 25s infinite;
 .slideshow img:nth-child(7){animation-delay:36s;}
 
 @keyframes slideShow{
-
 0%{opacity:0;}
 5%{opacity:1;}
 20%{opacity:1;}
 25%{opacity:0;}
 100%{opacity:0;}
-
 }
+
+/* body */
 
 body{
 margin:0;
@@ -61,30 +59,22 @@ justify-content:center;
 background:black;
 }
 
-/* main container */
+/* container */
 
 .container{
-
 width:95%;
-max-width:850px;
-
+max-width:900px;
 display:flex;
 flex-wrap:wrap;
-
 border-radius:20px;
-
 overflow:hidden;
-
 background:rgba(255,255,255,0.08);
-
 backdrop-filter:blur(18px);
-
 box-shadow:0 20px 50px rgba(0,0,0,0.7);
-
 animation:fadeUp 1s ease;
 }
 
-/* left panel */
+/* left */
 
 .left{
 flex:1;
@@ -101,29 +91,20 @@ margin-bottom:15px;
 }
 
 .editor-img{
-
 width:140px;
 height:140px;
-
 border-radius:50%;
-
 object-fit:cover;
-
 border:4px solid white;
-
 margin-top:10px;
-
 box-shadow:0 0 20px rgba(0,0,0,0.6);
-
 animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
-
 0%{transform:translateY(0)}
 50%{transform:translateY(-10px)}
 100%{transform:translateY(0)}
-
 }
 
 .title{
@@ -137,112 +118,158 @@ font-size:14px;
 opacity:0.85;
 }
 
-/* form area */
+/* right form */
 
 .right{
 flex:1;
 min-width:300px;
 padding:35px;
+max-height:600px;
+overflow:auto;
 }
 
-input,select{
+input,select,textarea{
 
 width:100%;
 padding:12px;
-
 margin:8px 0;
-
 border:none;
-
 border-radius:10px;
-
 background:rgba(255,255,255,0.9);
-
 outline:none;
-
 transition:0.3s;
+
 }
 
-input:focus,select:focus{
+textarea{
+resize:none;
+height:80px;
+}
 
+input:focus,select:focus,textarea:focus{
 transform:scale(1.03);
-
 box-shadow:0 0 10px #00eaff;
 }
 
 /* button */
 
 button{
-
 width:100%;
-
 padding:13px;
-
 margin-top:12px;
-
 border:none;
-
 border-radius:10px;
-
 background:linear-gradient(45deg,#ff3d3d,#ff0000);
-
 color:white;
-
 font-size:16px;
-
 cursor:pointer;
-
 transition:0.3s;
+position:relative;
 }
 
 button:hover{
-
 transform:scale(1.05);
-
 box-shadow:0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* success message */
+/* loader */
 
-.success{
-
+.loader{
 display:none;
-
-color:#00ffb3;
-
-text-align:center;
-
-margin-top:10px;
-
-font-weight:bold;
+border:3px solid #fff;
+border-top:3px solid transparent;
+border-radius:50%;
+width:18px;
+height:18px;
+animation:spin 1s linear infinite;
+margin:auto;
 }
 
-/* animation */
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:0.4s;
+}
+
+.popup.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.popup-content{
+
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:320px;
+animation:popupScale 0.5s ease;
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+
+}
+
+.checkmark{
+font-size:55px;
+color:#00c853;
+animation:bounce 1s infinite alternate;
+}
+
+.popup-content h2{
+margin-top:10px;
+}
+
+.popup-content p{
+font-size:15px;
+margin-top:10px;
+}
+
+.popup-content button{
+margin-top:20px;
+padding:10px 25px;
+border:none;
+background:#ff0000;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+@keyframes popupScale{
+0%{transform:scale(0);}
+80%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+@keyframes bounce{
+0%{transform:translateY(0);}
+100%{transform:translateY(-10px);}
+}
 
 @keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(25px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
+from{opacity:0;transform:translateY(25px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- slideshow background -->
-
 <div class="slideshow">
-
 <img src="slide.jpg">
 <img src="slide1.webp">
 <img src="slide2.png">
@@ -250,9 +277,7 @@ transform:translateY(0);
 <img src="slide4.jpg">
 <img src="slide5.jpg">
 <img src="slide6.jpg">
-
 </div>
-
 
 <div class="container">
 
@@ -261,21 +286,16 @@ transform:translateY(0);
 <img src="logo.png" class="logo">
 
 <div class="title">Weazel News</div>
-
 <div class="subtitle">Official Recruitment Portal</div>
 
 <img src="editor.jpg" class="editor-img">
 
 <p style="margin-top:15px">
-
 Editor in Chief<br>
-
 <strong>Sheikh Tamim</strong>
-
 </p>
 
 </div>
-
 
 <div class="right">
 
@@ -292,33 +312,64 @@ Editor in Chief<br>
 <input name="gpu" placeholder="Graphic Card Specification" required>
 
 <select name="position" required>
-
 <option value="">Select Position</option>
-
 <option>Cameraman</option>
-
 <option>Reporter</option>
-
 </select>
 
-<button type="submit">Submit Application</button>
+<input name="previousJob" placeholder="Previous Job">
+
+<textarea name="whyJoin" placeholder="Why you want to join Weazel News?"></textarea>
+
+<input name="timeGive" placeholder="How much time you can give Weazel News?">
+
+<select name="skill">
+<option value="">Select Your Skill</option>
+<option>I Know Video Editing</option>
+<option>Don't Know Video Editing</option>
+<option>Know Only Graphic Design</option>
+<option>I Will Learn It</option>
+<option>It's Very Hard For Me</option>
+</select>
+
+<button type="submit">
+
+<span id="btnText">Submit Application</span>
+
+<div class="loader" id="loader"></div>
+
+</button>
 
 </form>
 
-<div class="success" id="successMsg">
-
-Application Submitted Successfully ✅
-
 </div>
 
 </div>
 
+<!-- POPUP -->
+
+<div class="popup" id="popupBox">
+
+<div class="popup-content">
+
+<div class="checkmark">✔</div>
+
+<h2>Application Received</h2>
+
+<p>
+Sheikh Tamim, the Editor in Chief's <br>
+interview appointment team will contact you soon.
+</p>
+
+<button onclick="closePopup()">OK</button>
+
 </div>
 
+</div>
 
 <script>
 
-const scriptURL="https://script.google.com/macros/s/AKfycbzCpzF2IHRrZtfS7BgI2DPRpAVGUGIzmtt-haH23mCwY3IoZ0PgcYKKrkwkoW7l2X93/exec"
+const scriptURL="https://script.google.com/macros/s/AKfycbxuyGO_piOpVSZ_ONi0a1CbUMM7MOacOakXYwT6n76Z8s1GnIvcH70MGolI42jzUMQd/exec"
 
 const form=document.getElementById("newsForm")
 
@@ -326,17 +377,35 @@ form.addEventListener("submit",e=>{
 
 e.preventDefault()
 
+document.getElementById("btnText").style.display="none"
+document.getElementById("loader").style.display="block"
+
 fetch(scriptURL,{
 method:"POST",
 body:new FormData(form)
 })
+
 .then(()=>{
-document.getElementById("successMsg").style.display="block"
+
+document.getElementById("loader").style.display="none"
+
+document.getElementById("popupBox").classList.add("active")
+
 form.reset()
+
 })
+
 .catch(()=>alert("Submission error"))
 
 })
+
+function closePopup(){
+
+document.getElementById("popupBox").classList.remove("active")
+
+document.getElementById("btnText").style.display="inline"
+
+}
 
 </script>
 
